@@ -1,0 +1,26 @@
+<h1>To Do List</h1>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>View</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in all_items %}
+      <tr>
+        <td>{{ item.title }}</td>
+        <td>{{ item.description }}</td>
+        <td><a href="{% url 'items:item_view' item.id %}">view</a></td>
+        <td><a href="{% url 'items:item_edit' item.id %}">edit</a></td>
+        <td><a href="{% url 'items:item_delete' item.id %}">delete</a></td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<a href="{% url 'items:item_new' %}">New</a>
